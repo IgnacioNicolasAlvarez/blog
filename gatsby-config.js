@@ -7,15 +7,17 @@ const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE;
 module.exports = {
   siteMetadata: {
     siteTitle: `Ignacio Alvarez's Blog`,
-    siteTitleAlt: `Colono de Azure`,
+    siteTitleAlt: `Ignacio Alvarez's Blog`,
     siteUrl: `https://inalvarez.com/`,
     siteLanguage: `es`,
+    siteHeadline: `aaaaaaaaaaa`,
   },
   plugins: [
     {
       resolve: `@lekoarts/gatsby-theme-minimal-blog`,
       // See the theme's README for all available options
       options: {
+        formatString: `DD/MM/YYYY`,
         navigation: [
           {
             title: `Blog`,
@@ -31,10 +33,10 @@ module.exports = {
             name: `LinkedIn`,
             url: `https://www.linkedin.com/in/ignacio-nicolas-alvarez/`,
           },
-          {
+          /*{
             name: `Instagram`,
             url: `https://www.instagram.com/lekoarts.de/`,
-          },
+          },*/
         ],
       },
     },
@@ -65,9 +67,10 @@ module.exports = {
       options: {
         name: `minimal-blog - @lekoarts/gatsby-theme-minimal-blog`,
         short_name: `minimal-blog`,
-        description: `Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and code highlighting.`,
+        description: `The application does cool things and makes your life better.`,
         start_url: `/`,
         background_color: `#fff`,
+        lang: `es`,
         theme_color: `#6B46C1`,
         display: `standalone`,
         icons: [
