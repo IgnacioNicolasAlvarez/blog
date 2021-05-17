@@ -1,8 +1,8 @@
 require(`dotenv`).config({
   path: `.env`,
-})
+});
 
-const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE
+const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE;
 
 module.exports = {
   siteMetadata: {
@@ -44,10 +44,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
-        
-        trackingIds: [
-          'G-MTPKSZ6RMK', 
-        ],
+        trackingIds: ["UA-186123865-1"],
         gtagConfig: {
           anonymize_ip: true,
           cookie_expires: 0,
@@ -55,7 +52,7 @@ module.exports = {
         pluginConfig: {
           head: false,
           respectDNT: true,
-          exclude: ['/preview/**', '/do-not-track/me/too/'],
+          exclude: ["/preview/**", "/do-not-track/me/too/"],
         },
       },
     },
@@ -96,4 +93,4 @@ module.exports = {
       },
     },
   ].filter(Boolean),
-}
+};
