@@ -25,8 +25,8 @@ module.exports = {
         ],
         externalLinks: [
           {
-            name: `Twitter`,
-            url: `https://twitter.com/lekoarts_de`,
+            name: `LinkedIn`,
+            url: `https://www.linkedin.com/in/ignacio-nicolas-alvarez/`,
           },
           {
             name: `Instagram`,

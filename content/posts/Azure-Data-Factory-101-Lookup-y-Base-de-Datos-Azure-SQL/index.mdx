@@ -1,0 +1,20 @@
+---
+title: "Azure Data Factory 101 - Lookup y Base de Datos Azure SQL"
+date: 2021-05-17
+slug: "/ADF-101-Lookup-SQL"
+canonicalUrl: "https://inalvarez.com/"
+---
+
+La Activity **Lookup** suele utilizarse para recuperar un conjunto de datos o resultado parcial de cualquiera de las fuentes de datos de Azure Data Factory. Suele utilizarse para recuperar datos de configuracion sobre los cuales se va a iterar, chequear la existencia de ciertos datos en un tabla, explorar la estructura de un archivo json almacenado o directamente desde la web, etc.
+
+> Hay que considerar que deben seguirse las siguientes limitaciones al momento de utilizar una activity **Lookup**:
+>
+> * Lookup puede devolver 5000 filas como máximo (si el conjunto de resultados contiene más filas, devolverá unicamente las primeras 5000).
+>
+> * La salida del Lookup permite un tamaño máximo de 4 MB, si esté limite es superado, la actividad fallará.
+>
+> * La duración máxima de la ejecución de una Activity Lookup es de 24 horas.
+>
+> * Si se esta utilizando un Lookup con una operación DML SQL o bien, un procedimiento almacenado, este debe devolver obligatoriamente un registro como mínimo. De lo contrario fallará.
+
+Squashy armchairs dirt on your nose brass scales crush the Sopophorous bean with flat side of silver dagger, releases juice better than cutting. Full moon Whomping Willow three turns should do it lemon drops. Locomotor trunks owl treats that will be 50 points, Mr. Potter. Witch Weekly, he will rise again and he will come for us, headmaster Erumpent horn. Fenrir Grayback horseless carriages ‘zis is a chance many would die for!
