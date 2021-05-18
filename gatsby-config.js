@@ -11,6 +11,7 @@ module.exports = {
     siteUrl: `https://inalvarez.com/`,
     siteLanguage: `es`,
     siteHeadline: `aaaaaaaaaaa`,
+    author: `Alvarez Ignacio Nicolas`
   },
   plugins: [
     {
@@ -24,7 +25,7 @@ module.exports = {
             slug: `/blog`,
           },
           {
-            title: `About`,
+            title: `Sobre Mi`,
             slug: `/about`,
           },
         ],
