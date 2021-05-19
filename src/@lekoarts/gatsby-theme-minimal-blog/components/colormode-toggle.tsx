@@ -1,10 +1,10 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { jsx } from "theme-ui";
 
 type Props = {
-  isDark: boolean
-  toggle: (e: any) => void
-}
+  isDark: boolean;
+  toggle: (e: any) => void;
+};
 
 // Adapted from: https://codepen.io/aaroniker/pen/KGpXZo and https://github.com/narative/gatsby-theme-novela/blob/714b6209c5bd61b220370e8a7ad84c0b1407946a/%40narative/gatsby-theme-novela/src/components/Navigation/Navigation.Header.tsx
 
@@ -12,8 +12,8 @@ const ColorModeToggle = ({ isDark, toggle }: Props) => (
   <button
     onClick={toggle}
     type="button"
-    aria-label={isDark ? `Activate Light Mode` : `Activate Dark Mode`}
-    title={isDark ? `Activate Light Mode` : `Activate Dark Mode`}
+    aria-label={isDark ? `Activar Light Mode` : `Activar Dark Mode`}
+    title={isDark ? `Activar Light Mode` : `Activar Dark Mode`}
     sx={{
       opacity: 0.65,
       position: `relative`,
@@ -44,7 +44,8 @@ const ColorModeToggle = ({ isDark, toggle }: Props) => (
         transform: isDark ? `scale(0.55)` : `scale(1)`,
         transition: `all 0.45s ease`,
         overflow: isDark ? `visible` : `hidden`,
-        boxShadow: (t) => (isDark ? `none` : `inset 8px -8px 0px 0px ${t.colors.toggleIcon}`),
+        boxShadow: (t) =>
+          isDark ? `none` : `inset 8px -8px 0px 0px ${t.colors.toggleIcon}`,
         "&:before": {
           content: `""`,
           position: `absolute`,
@@ -75,6 +76,6 @@ const ColorModeToggle = ({ isDark, toggle }: Props) => (
       }}
     />
   </button>
-)
+);
 
-export default ColorModeToggle
+export default ColorModeToggle;

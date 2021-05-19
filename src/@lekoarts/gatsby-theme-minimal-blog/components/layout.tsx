@@ -42,7 +42,7 @@ const Layout = ({ children, className = `` }: LayoutProps) => (
       })}
     />
     <SEO />
-    <SkipNavLink>Skip to content</SkipNavLink>
+    <SkipNavLink>Saltear a Contenido</SkipNavLink>
     <Container>
       <Header />
       <Box id="skip-nav" sx={{ ...CodeStyles }} className={className}>

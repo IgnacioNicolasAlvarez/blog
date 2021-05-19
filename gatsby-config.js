@@ -11,6 +11,7 @@ module.exports = {
     siteUrl: `https://inalvarez.com/`,
     siteLanguage: `es`,
     siteHeadline: `aaaaaaaaaaa`,
+    description: `Blog de Ignacio Alvarez`,
     author: `Alvarez Ignacio Nicolas`
   },
   plugins: [
@@ -47,28 +48,13 @@ module.exports = {
         trackingId: process.env.GOOGLE_ANALYTICS_ID,
       },
     },
-    {
-      resolve: `gatsby-plugin-google-gtag`,
-      options: {
-        trackingIds: ["UA-186123865-1"],
-        gtagConfig: {
-          anonymize_ip: true,
-          cookie_expires: 0,
-        },
-        pluginConfig: {
-          head: false,
-          respectDNT: true,
-          exclude: ["/preview/**", "/do-not-track/me/too/"],
-        },
-      },
-    },
     `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `minimal-blog - @lekoarts/gatsby-theme-minimal-blog`,
-        short_name: `minimal-blog`,
-        description: `The application does cool things and makes your life better.`,
+        name: `Blog de Ignacio Alvarez`,
+        short_name: `Blog de Ignacio Alvarez`,
+        description: `Blog de Ignacio Alvarez`,
         start_url: `/`,
         background_color: `#fff`,
         lang: `es`,

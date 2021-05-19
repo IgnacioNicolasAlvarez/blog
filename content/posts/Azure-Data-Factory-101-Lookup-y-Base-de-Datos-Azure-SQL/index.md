@@ -23,7 +23,26 @@ La Activity **Lookup** suele utilizarse para recuperar un conjunto de datos o re
 
 Si bien puede utilizarse **Lookup** para interactual con distintas fuentes, vamos a ver que sucede con uno de los origenes mas comunes: **Azure SQL** *(aplicable tambien para Azure Synapse SQL Pools).
 
+Para crear una Activity Lookup basta con arrastrar un elemento "Lookup" del listado izquierdo bajo el tab "General", y dejarlo sobre el canvas ubicado en la sección derecha. Al darle click se deplegarán las opciones de configuración.
+
+Desplegado el primer panel de configuración _"General"_, aparecerán las opciones generales, aplicables para los distintos origenes de datos. Esta configuración es similar para distintas fuentes: Json, SQL, csv, parquet, etc. Vamos a desglozar la configuración:
+
+>
+> * **Name**: Nombre descriptivo de la Actividad. No puede finalizar en espacio en blancos, números o caracteres especiales, puede contar con espacios en blanco en el medio.  
+>
+> * **Description**: Descripción general de la Actividad, usualmente contiene fecha de creación, autor, finalidad o detalles que son necesarios comunicar a un futuro desarrollador por mantenimiento.
+> * **Timeout**: Duración máxima de la ejecución, el máximo configurable es de 24 horas.
+>
+> * **Retry**: Cantidad de veces que va a reinterse la ejeción de una Actividad al fallar. El valor default es cero.
+>
+> * **Retry Interval**: Cantidad de segundos entre reintentos frente a una falla o error.
+>
+> * **Secure Output**: Cantidad de segundos entre reintentos frente a una falla o error.
+>
+
 ![Lookup 1](./lookup1.PNG "IMG Creacion de Lookup")
+
+
 ![Lookup 2](./lookup2.PNG "IMG Seleccionar Dataset")
 ![Lookup 3](./lookup3.PNG "IMG Creacion de Dataset")
 ![Lookup 4](./lookup4.PNG "IMG Seleccionar LinkedService")
