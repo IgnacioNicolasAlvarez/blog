@@ -37,7 +37,7 @@ Desplegado el primer panel de configuración _"General"_, aparecerán las opcion
 >
 > * **Retry Interval**: Cantidad de segundos entre reintentos frente a una falla o error.
 >
-> * **Secure Output**: Cantidad de segundos entre reintentos frente a una falla o error.
+> * **Secure Output y Secure Input**: Al seleccionarse, indica que la salida/entrada de esta actividad no podrá ser revisada en logs o bien visualizada literalmente en una actividad posterior.
 >
 
 ![Lookup 1](./lookup1.PNG "IMG Creacion de Lookup")
