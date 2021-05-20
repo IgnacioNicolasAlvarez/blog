@@ -67,7 +67,7 @@ En este caso ingresamos en el buscador _"Azure SQL"_  y seleccionamos la opción
 
 Cada Dataset posee asociado un **LinkedService**, en terminos cortos es el equivalente a una **Cadena de Conexión** o **Connection String** donde proporcionamos las credenciales necesarias, la subscripcion de Azure a utilizar, el servidor, el nombre de la BD, entre otros valores. Cabe destacar que para cada tipo de Dataset, suelen existir parametros distintos al momento de crear un *LinkedService*.
 
-> **Tip**: SUna buena práctica (y resulta muy comodo), parametrizar los *Datasets* y *LinkedServices* para emplearlos en varios casos distintos. En la práctica conviene tener una relación **1 a 1** entre Dataset y LinkedService.
+> **Tip**: Una buena práctica (y resulta muy comodo), parametrizar los *Datasets* y *LinkedServices* para emplearlos en varios casos distintos. En la práctica conviene tener una relación **1 a 1** entre Dataset y LinkedService.
 
 ![Lookup 4](./lookup4.PNG "IMG Seleccionar LinkedService")
 ![Lookup 5](./lookup5.PNG "IMG Creacion de LinkedService")
@@ -81,8 +81,47 @@ Ya creado y seleccionado el Dataset, ya contamos con nuestro origen de datos. Da
 
 Si bien el objetivo principal de un Lookup podría resultar en obtener datos desde un origen, tambien es posible alterarlo mediante operaciones **DELETE/INSERT/UPDATE**. Hay que tener en cuenta que un Lookup a SQL SIEMPRE debe devolver un valor.
 
-![Lookup 7](./lookup7.PNG "IMG Seleccion Isolation Level")
-![Lookup 8](./lookup8.PNG "IMG Opciones Isolation Level")
+> **Tip**: Para asegurarse que una query **DELETE/INSERT/UPDATE** devuelta un valor siempre, es posible colocar un **SELECT 1;** al final de script.
+
 ![Lookup 9](./lookup9.PNG "IMG Query en Lookup")
+
+Quizas las 2 configuraciones más importantes que podemos realizar son la elección del **Isolation Level** y el **Query Timeout**.
+El **Isolation Level** indicará la politica de lockeo de una tabla.
+
+![Lookup 7](./lookup7.PNG "IMG Seleccion Isolation Level")
+
+> **Tip**: El Isolation level pega directamente en la performance de una query. Exploremos las opciones:
+> * **READ UNCOMMITTED**: Indica que las queries podrán leer filas de una tabla T cuyas filas fueron modificadas pero que aun no fueron confirmadas (a.k.a. comiteadas). Puede llegar a producir _"dirty reads"_ si justo se lee una tabla que fue modificada concurrentemente.
+> * **READ COMMITTED**: Similar a READ UNCOMMITTED pero, no podrán leerse aquellas filas que fueron modificadas y aún no fueron commiteadas. Es más restrictivo que la opción anterior.
+> * **REPEATABLE READ**: Similar al READ COMMITTED pero agregá la restricción de que, mientras dure la lectura, otras transacciones no podrán alterar los datos leidos en curso.
+> * **SNAPSHOT**: Al modificar datos, se produce una "foto" de los datos al momento previo al commit. Si ocurren cambios por otras transacciones durante la ejecución, estos no serán tenidos en cuenta y se continuará con la ejecución normalmente.
+> * **SERIALIZABLE**: Similar a REPEATABLE READ pero aún más restrictivo. Otras transacciones no podrán insertar filas con valores clave (PK/FK) que esten siendo operados en ese momento.
+
+> Cabe destacar que entre más restrictivo sea un **ISOLATION LEVEL**, este brindará mayor consistencia en las ejecuciones al precio de producir demoras. En la mayoria de los casos relacionados con Business Intelligence y Datawarehouses, es recomendable emplear **READ UNCOMMITTED** o bien **SNAPSHOT**.
+
+![Lookup 8](./lookup8.PNG "IMG Opciones Isolation Level")
+
+En el caso de ejecutar un SP vía Lookup, este debe ser creado previamente. Luego es necesario ingresarlo o bien buscarlo.
+
+```SQL
+USE [sql_produccion]
+
+CREATE PROCEDURE get_mediciones   
+    @FechaDesde datetime,   
+    @FechaHasta datetime  
+AS   
+    SELECT *
+    FROM tabla_prueba_mediciones
+    WHERE fecha_alta between @FechaDesde and @FechaHasta;
+```
+
+
 ![Lookup 10](./lookup10.PNG "IMG SP en Lookup")
+
+En caso de que el Store Procedure requiera valores de entrada, es posible definirlos mediante presionar el botón "Import Parameters". 
+
 ![Lookup 10-1](./lookup10-1.PNG "IMG Importacion de Parametros en SP Lookup")
+
+Cubrimos el funcionamiento básico de las Actividades Lookup para Azure SQL. Este procedimiento es similar para los Azure Synapse SQL Pools, tanto serverless como dedicado.
+
+Saludos!
