@@ -42,13 +42,45 @@ Desplegado el primer panel de configuración _"General"_, aparecerán las opcion
 
 ![Lookup 1](./lookup1.PNG "IMG Creacion de Lookup")
 
+En la pestaña _"Settings"_ debemos definir obligatoriamente el origen que vamos a consumir, este puede ser un archivo de texto plano en **distintos formatos** (JSO, CSV, etc), una aplicación web, un endpoint de API REST, una base de datos SQL o no SQL, entre otros varias posibles. Para este caso (_y como lo dice el título, vamos a trabajar con una base de datos **Azure SQL**_) se creó una BD _"sql produccion"_ y la tabla "_tabla_prueba_mediciones_" .
+
+```SQL
+USE [sql_produccion]
+
+CREATE TABLE [dbo].[tabla_prueba_mediciones]
+(
+    [ID_Medicion] INT NULL,
+    [Medicion] DECIMAL(18,8) NULL,
+    [Fecha_Alta] DATETIME NULL,
+);
+```
+
+Necesitamos asociar un dataset a nuestra Activity **Lookup**, para la cual, como en este caso no tenemos ningún **Dataset** creado, procedemos a crear uno presionando _"New"_.
 
 ![Lookup 2](./lookup2.PNG "IMG Seleccionar Dataset")
+
+Se desplegará el listado general con todos los posibles orígenes de datos consumibles. Distintos _Vendors_, bases de datos, archivos, etc se podrán seleccionar. Más adelante hablaremos de como **parametrizar** los Datasets a fin de contar con una cantidad limitada para facilitar el uso y mantenimiento.
+
+En este caso ingresamos en el buscador _"Azure SQL"_  y seleccionamos la opción que nos interesa.
+
 ![Lookup 3](./lookup3.PNG "IMG Creacion de Dataset")
+
+Cada Dataset posee asociado un **LinkedService**, en terminos cortos es el equivalente a una **Cadena de Conexión** o **Connection String** donde proporcionamos las credenciales necesarias, la subscripcion de Azure a utilizar, el servidor, el nombre de la BD, entre otros valores. Cabe destacar que para cada tipo de Dataset, suelen existir parametros distintos al momento de crear un *LinkedService*.
+
+> **Tip**: SUna buena práctica (y resulta muy comodo), parametrizar los *Datasets* y *LinkedServices* para emplearlos en varios casos distintos. En la práctica conviene tener una relación **1 a 1** entre Dataset y LinkedService.
+
 ![Lookup 4](./lookup4.PNG "IMG Seleccionar LinkedService")
 ![Lookup 5](./lookup5.PNG "IMG Creacion de LinkedService")
 ![Lookup 5-1](./lookup5-1.PNG "IMG Ejemplo Creacion de LinkedService")
+
+Bien, ya tenemos creado nuestro LinkedService, ahora podemos seleccionarlo para crear nuestro Dataset. Resulta opcional indicar la tabla o vista a utilizar.
+
 ![Lookup 6](./lookup6.PNG "IMG Seleccion de LinkedService")
+
+Ya creado y seleccionado el Dataset, ya contamos con nuestro origen de datos. Dado que nuestro Source es de tipo Azure SQL, se nos desplegará la posibilidad de consultar una Tabla o Vista, ejecutar una Query o bien invocar un Store Procedure.
+
+Si bien el objetivo principal de un Lookup podría resultar en obtener datos desde un origen, tambien es posible alterarlo mediante operaciones **DELETE/INSERT/UPDATE**. Hay que tener en cuenta que un Lookup a SQL SIEMPRE debe devolver un valor.
+
 ![Lookup 7](./lookup7.PNG "IMG Seleccion Isolation Level")
 ![Lookup 8](./lookup8.PNG "IMG Opciones Isolation Level")
 ![Lookup 9](./lookup9.PNG "IMG Query en Lookup")
