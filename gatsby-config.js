@@ -10,7 +10,7 @@ module.exports = {
     siteTitleAlt: `Ignacio Alvarez's Blog`,
     siteUrl: `https://inalvarez.com/`,
     siteLanguage: `es`,
-    siteHeadline: `aaaaaaaaaaa`,
+    siteHeadline: `Blog de Ignacio Alvarez`,
     description: `Blog de Ignacio Alvarez`,
     author: `Alvarez Ignacio Nicolas`
   },
@@ -34,6 +34,10 @@ module.exports = {
           {
             name: `LinkedIn`,
             url: `https://www.linkedin.com/in/ignacio-nicolas-alvarez/`,
+          },
+          {
+            name: `Email`,
+            url: `mailto:ignacionicolasalvarez@gmail.com`,
           },
           /*{
             name: `Instagram`,
